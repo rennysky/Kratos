@@ -1264,7 +1264,7 @@ function Kratos_admin_notice() {
     }
   </style>
   <div class="notice notice-info">
-  <p class="about-description">嗨，欢迎使用 Kratos 主题开始创作，您当前使用的主题是由Kratos衍生KratosR版本<a target="_blank" rel="nofollow" href="https://github.com/rennysky/KratosR">Github</a></p>
+  <p class="about-description">嗨，欢迎使用 KratosR 主题开始创作，您当前使用的主题是由Kratos衍生KratosR版本<a target="_blank" rel="nofollow" href="https://github.com/rennysky/KratosR">Github</a></p>
   </div>
   <?php
 }
@@ -1276,7 +1276,7 @@ function Kratos_admin_notice() {
  * @license GPL-3.0
  */
 function kratos_admin_footer_text($text) {
-       $text = '<span id="footer-thankyou">感谢使用 <a href=http://cn.wordpress.org/ target="_blank">WordPress</a>进行创作，<a target="_blank" rel="nofollow" href="https://github.com/rennysky/KratosR">点击</a> Github。</span>';
+       $text = '<span id="footer-thankyou">感谢使用 <a href=http://cn.wordpress.org/ target="_blank">WordPress</a>进行创作，<a target="_blank" rel="nofollow" href="https://github.com/rennysky/KratosR">点击</a> KratosR。</span>';
     return $text;
 }
 
