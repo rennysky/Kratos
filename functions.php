@@ -34,6 +34,40 @@ function kratos_get_avatar( $avatar ) {
 }
 add_filter( 'get_avatar', 'kratos_get_avatar' );
 
+
+
+
+//部分内容登录可见
+// 作者：https://uno.moe
+function login_to_read($atts, $content=null) {
+	extract(shortcode_atts(array("notice" => '<span style="color: red;">温馨提示：</span>此处内容需要<a title="登录后可见" href="login.php">登录</a>后才能查看！'), $atts));
+	if ( is_user_logged_in() && !is_null( $content ) && !is_feed() )
+                return $content;
+        return $notice;
+}
+add_shortcode('vip', 'login_to_read');
+
+///* Name: 部分内容输入密码可见（短代码）
+ //* 作者：https://uno.moe
+function e_secret($atts, $content=null){
+ extract(shortcode_atts(array('key'=>null), $atts));
+ if(isset($_POST['e_secret_key']) && $_POST['e_secret_key']==$key){
+ return '
+<div class="e-secret">'.$content.'</div>
+';
+ }
+ else{
+ return '
+<form class="e-secret" action="'.get_permalink().'" method="post" name="e-secret"><label>输入密码查看加密内容：</label><input type="password" name="e_secret_key" class="euc-y-i" maxlength="50"><input type="submit" class="euc-y-s" value="确定">
+<div class="euc-clear"></div>
+</form>
+';
+ }
+}
+add_shortcode('secret','e_secret'); 
+
+ 
+ 
 /**
  * Disable automatic formatting
  * 
