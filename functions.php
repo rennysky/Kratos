@@ -39,16 +39,22 @@ add_filter( 'get_avatar', 'kratos_get_avatar' );
 
 //部分内容登录可见
 // 作者：https://uno.moe
+//[vip]我是被隐藏的内容，样式一（默认样式）[/vip]
+
+//[vip notice="登录后才显示哟"] 我是被隐藏的内容，样式二（自定义回复信息）[/vip]
+
+
 function login_to_read($atts, $content=null) {
-	extract(shortcode_atts(array("notice" => '<span style="color: red;">温馨提示：</span>此处内容需要<a title="登录后可见" href="login.php">登录</a>后才能查看！'), $atts));
+	extract(shortcode_atts(array("notice" => '<span style="color: red;">温馨提示：</span>此处内容需要<a title="登录后可见" href="wp-login.php">登录</a>后才能查看！'), $atts));
 	if ( is_user_logged_in() && !is_null( $content ) && !is_feed() )
                 return $content;
         return $notice;
 }
 add_shortcode('vip', 'login_to_read');
 
-///* Name: 部分内容输入密码可见（短代码）
- //* 作者：https://uno.moe
+//Name: 部分内容输入密码可见（短代码）
+//作者：https://uno.moe
+//[secret key="密码"]加密内容[/secret]
 function e_secret($atts, $content=null){
  extract(shortcode_atts(array('key'=>null), $atts));
  if(isset($_POST['e_secret_key']) && $_POST['e_secret_key']==$key){
@@ -1258,7 +1264,7 @@ function Kratos_admin_notice() {
     }
   </style>
   <div class="notice notice-info">
-  <p class="about-description">嗨，欢迎使用 Kratos 主题开始创作，您当前使用的主题是由Kratos衍生KratosR版本<a target="_blank" rel="nofollow" href="https://github.com/rennysky/Kratos">Github</a></p>
+  <p class="about-description">嗨，欢迎使用 Kratos 主题开始创作，您当前使用的主题是由Kratos衍生KratosR版本<a target="_blank" rel="nofollow" href="https://github.com/rennysky/KratosR">Github</a></p>
   </div>
   <?php
 }
@@ -1270,7 +1276,7 @@ function Kratos_admin_notice() {
  * @license GPL-3.0
  */
 function kratos_admin_footer_text($text) {
-       $text = '<span id="footer-thankyou">感谢使用 <a href=http://cn.wordpress.org/ target="_blank">WordPress</a>进行创作，<a target="_blank" rel="nofollow" href="https://github.com/rennysky/Kratos">点击</a> Github。</span>';
+       $text = '<span id="footer-thankyou">感谢使用 <a href=http://cn.wordpress.org/ target="_blank">WordPress</a>进行创作，<a target="_blank" rel="nofollow" href="https://github.com/rennysky/KratosR">点击</a> Github。</span>';
     return $text;
 }
 
