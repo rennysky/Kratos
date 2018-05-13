@@ -34,6 +34,40 @@ function kratos_get_avatar( $avatar ) {
 }
 add_filter( 'get_avatar', 'kratos_get_avatar' );
 
+
+
+
+//部分内容登录可见
+// 作者：https://uno.moe
+function login_to_read($atts, $content=null) {
+	extract(shortcode_atts(array("notice" => '<span style="color: red;">温馨提示：</span>此处内容需要<a title="登录后可见" href="login.php">登录</a>后才能查看！'), $atts));
+	if ( is_user_logged_in() && !is_null( $content ) && !is_feed() )
+                return $content;
+        return $notice;
+}
+add_shortcode('vip', 'login_to_read');
+
+///* Name: 部分内容输入密码可见（短代码）
+ //* 作者：https://uno.moe
+function e_secret($atts, $content=null){
+ extract(shortcode_atts(array('key'=>null), $atts));
+ if(isset($_POST['e_secret_key']) && $_POST['e_secret_key']==$key){
+ return '
+<div class="e-secret">'.$content.'</div>
+';
+ }
+ else{
+ return '
+<form class="e-secret" action="'.get_permalink().'" method="post" name="e-secret"><label>输入密码查看加密内容：</label><input type="password" name="e_secret_key" class="euc-y-i" maxlength="50"><input type="submit" class="euc-y-s" value="确定">
+<div class="euc-clear"></div>
+</form>
+';
+ }
+}
+add_shortcode('secret','e_secret'); 
+
+ 
+ 
 /**
  * Disable automatic formatting
  * 
@@ -1224,7 +1258,7 @@ function Kratos_admin_notice() {
     }
   </style>
   <div class="notice notice-info">
-  <p class="about-description">嗨，欢迎使用 Kratos 主题开始创作，同时欢迎您加入主题交流群：<a target="_blank" rel="nofollow" href="http://shang.qq.com/wpa/qunwpa?idkey=182bd07a135c085c88ab7e3de38f2b2d9a86983292355a4708926b99dcd5b89f">51880737</a></p>
+  <p class="about-description">嗨，欢迎使用 Kratos 主题开始创作，您当前使用的主题是由Kratos衍生KratosR版本<a target="_blank" rel="nofollow" href="https://github.com/rennysky/Kratos">Github</a></p>
   </div>
   <?php
 }
@@ -1236,7 +1270,7 @@ function Kratos_admin_notice() {
  * @license GPL-3.0
  */
 function kratos_admin_footer_text($text) {
-       $text = '<span id="footer-thankyou">感谢使用 <a href=http://cn.wordpress.org/ target="_blank">WordPress</a>进行创作，<a target="_blank" rel="nofollow" href="http://shang.qq.com/wpa/qunwpa?idkey=182bd07a135c085c88ab7e3de38f2b2d9a86983292355a4708926b99dcd5b89f">点击</a> 加入主题讨论群。</span>';
+       $text = '<span id="footer-thankyou">感谢使用 <a href=http://cn.wordpress.org/ target="_blank">WordPress</a>进行创作，<a target="_blank" rel="nofollow" href="https://github.com/rennysky/Kratos">点击</a> Github。</span>';
     return $text;
 }
 
