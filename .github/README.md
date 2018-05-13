@@ -1,5 +1,6 @@
 # KratosR 
-######（Powered by [Kratos](https://github.com/Vtrois/Kratos "Kratos")）
+
+###### （Powered by [Kratos](https://github.com/Vtrois/Kratos "Kratos")）
 
 A clean, simple and responsive blog theme of WordPress, based on [Bootstrap](https://github.com/twbs/bootstrap) and [Font Awesome](https://github.com/FortAwesome/Font-Awesome). Created and maintained by Vtrois.
 
@@ -93,7 +94,7 @@ kratosR
 └── style.css
 ```
   
-##KratosR new momentum
+## KratosR new momentum
 
 [vip]我是被隐藏的内容，样式一（默认样式）[/vip]
 
